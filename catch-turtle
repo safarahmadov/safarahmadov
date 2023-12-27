@@ -1,0 +1,85 @@
+
+
+import time
+import turtle
+from random import randint
+
+
+
+#ekrani hazirladik
+ekran=turtle.Screen()
+ekran.bgcolor("aqua")
+ekran.title("hocanin odevi")
+
+
+
+#skor hizalamak icin kullandim
+skor=turtle.Turtle("turtle")
+skor.hideturtle()
+skor.penup()
+skor.goto(0,300)
+
+#skor degisimi
+score=0
+def score_guncelle():
+     skor.clear()
+     skor.write(f"score: {score}", align="center", font=("Arial", 20, "normal"))
+
+
+
+
+#rastgele kaplumbaga cikmasi
+#kaplumbaga
+kaplumbaga=turtle.Turtle("turtle")
+kaplumbaga.color("green")
+kaplumbaga.penup()
+
+
+
+#rastgele kaplumbaga cikmasi icin
+def rastgele(x,y):
+    global score
+    x_ekseni=randint(-200,200)#-------------->x ekseninde ortaya cikma kaplumbaga
+    y_ekseni=randint(-200,200)#------------->y ekseninde ortaya cikma kaplumbaga
+    kaplumbaga.goto(x_ekseni,y_ekseni)
+    #kaplumbaga.hideturtle()#----------->kaybolma 
+    #kaplumbaga.showturtle()#--------->ortaya cikma
+    score=score+1#--------->ortaya cikma
+    score_guncelle()
+
+
+#ustune basinca haraket etmesi icin
+kaplumbaga.onclick(rastgele)
+
+
+# zaman ayarlama
+zaman=turtle.Turtle()
+zaman.hideturtle()
+zaman.penup()
+zaman.goto(0, 350)
+
+
+#zaman ekranda
+def times(sayac):
+    zaman.clear()
+    zaman.write(f"timer: {sayac}", align="center", font=("Arial", 20, "normal"))
+
+#game over yazisi
+def game_over():
+    zaman.clear()
+    zaman.write("Game Over", align="center", font=("Arial", 30, "normal"))
+
+
+#dongu
+sayac= 30
+while sayac > 1:
+        time.sleep(1)
+        sayac=sayac-1
+        times(sayac)
+
+game_over()
+
+turtle.mainloop()
+
+    
+
