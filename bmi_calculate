@@ -1,0 +1,58 @@
+import tkinter
+#screen
+screen=tkinter.Tk()
+screen.title("BMI")
+screen.minsize(width=400, height=400)
+
+#boy_text
+type=tkinter.Label(text="boy",font=("Arial", 12, "normal"))
+type.place(x=70, y=50)
+
+#kilo_text
+type2=tkinter.Label(text="kilo",font=("Arial", 12, "normal"))
+type2.place(x=70, y=10)
+
+
+#bmi calculate
+def bmi_calculate():
+    weight=float(kilo.get())
+    height=float(boy.get())
+    bmi_calculator=weight/height**2
+    print(f"BMI:{bmi_calculator:.2f}  kg / metrekare")
+    result_(bmi_calculator)
+
+
+def result_(bmi_calculator):
+    if bmi_calculator < 18.5:
+        result_text = "Zayıf"
+    elif 18.5 <= bmi_calculator < 24.9:
+        result_text = "Normal"
+    elif 25 <= bmi_calculator < 29.9:
+        result_text = "Fazla Kilolu"
+    elif 30 <= bmi_calculator < 34.9:
+        result_text = "Obezite Derecesi 1 (Hafif Obez)"
+    elif 35 <= bmi_calculator < 39.9:
+        result_text = "Obezite Derecesi 2 (Orta Düzey Obez)"
+    else:
+        result_text = "Obezite Derecesi 3 (Ağır Obez)"
+
+    bmi_result.config(text=f"Sonuç: {result_text}")
+
+
+#kilo_entry
+kilo=tkinter.Entry()
+kilo.place(x=100, y=15)
+
+#boy_calculate
+boy=tkinter.Entry()
+boy.place(x=100, y=55)
+
+#Bmi Buttoon
+bmi=tkinter.Button(text="BMI hesapla", command=bmi_calculate)
+bmi.place(x=100, y=75)
+
+#result
+bmi_result=tkinter.Label(screen, text="Sonuc")
+bmi_result.place(x=100, y=100)
+
+tkinter.mainloop()
