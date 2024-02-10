@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- templates/cart/view_cart.html -->
+
+<!-- templates/cart/view_cart.html -->
+
+<h2>Sepetiniz</h2>
+
+{% if cart_items %}
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item.product.name }} - {{ item.quantity }} adet - {{ item.product.price}} * {{item.quantity }} $</li>
+        {% endfor %}
+    </ul>
+    <p>Toplam Tutar: {{ total_price }} $</p>
+{% else %}
+    <p>Sepetiniz boş.</p>
+{% endif %}
+
+
+{% endblock  %}
+
+

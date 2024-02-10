@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h1>Welcome {{ user.username }}</h1>
+    <li class="nav-item">
+      <form method="post" action="{% url 'logout' %}?next=/">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Logout</button>
+      </form>
+    </li>
+  {% else %}
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %} 
+      {{ form }}
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  {% endif %}
+{% endblock %}
